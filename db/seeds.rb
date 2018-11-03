@@ -10,5 +10,6 @@
    name: Faker::Team.name,
    photo: "http://lorempixel.com/400/200/business/#{i + 1}/",
    description: Faker::Team.state
+   
  )
 end
