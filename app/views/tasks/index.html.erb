@@ -1,11 +1,12 @@
-<h1>Heading 1</h1>
+<br/>
+<h1>ToDo</h1>
 
 <div class="row">
     <% @tasks.each_slice(3) do |x| %>
       <% x.each do |task| %>
 
         <div class="card" style="width: 18rem;">
-          <%= image_tag image_url(task.photo), class: 'card-img-top' %> 
+      <!--    <%= image_tag image_url(task.photo), class: 'card-img-top' %>-->
           <div class="card-body">
               <h5 class="card-title"><%= task.name %></h5>
               <p class="card-text"><%= task.description %></p>
@@ -13,11 +14,11 @@
 
 
                       <% if checking(task).nil? %>
-                      <td><%= link_to 'Terminar', task_task_details_path(task.id), class: 'btn btn-danger'%></td>
-
-                        <p>NO LISTO</p>
+                      <%= link_to 'Terminar', task_task_details_path(task.id), class: 'btn btn-danger'%>
                       <% else %>
-                      <p> LISTO</p>
+                      <%= link_to 'Terminada',  task_task_details_path(task, current_user), method: :DELETE, class: 'btn btn-success' %>
+                      <%= link_to 'Terminar', task_task_details_path(task.id), class: 'btn btn-success'%>
+
                       <% end %>
 
           </div>
