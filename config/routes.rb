@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-#  get 'task_detail/create'
 
   resources :tasks
   devise_for :users
+  delete 'tasks/:id/deletetask', to: 'tasks#deletetask', as: 'deletetask'
+
   root to: 'tasks#index'
 #  resources :task_details, only: [:create, :destroy, :show]
   resources :tasks, only: [:index] do

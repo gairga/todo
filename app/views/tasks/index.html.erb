@@ -9,17 +9,16 @@
       <!--    <%= image_tag image_url(task.photo), class: 'card-img-top' %>-->
           <div class="card-body">
               <h5 class="card-title"><%= task.name %></h5>
-              <p class="card-text"><%= task.description %></p>
+
+              <p class="card-text"><strong>Descripción:</strong><%= task.description %></p>
 
 
 
-                      <% if checking(task).nil? %>
-                      <%= link_to 'Terminar', task_task_details_path(task.id), class: 'btn btn-danger'%>
-                      <% else %>
-                      <%= link_to 'Terminada',  task_task_details_path(task, current_user), method: :DELETE, class: 'btn btn-success' %>
-                      <%= link_to 'Terminar', task_task_details_path(task.id), class: 'btn btn-success'%>
-
-                      <% end %>
+              <% if checking(task).nil? %>
+                  <%= link_to 'No listo',  task_task_details_path(task.id), method: :POST, class: 'btn btn-danger' %>
+              <% else %>
+                  <%= link_to 'Listo',  task_task_detail_path(task, current_user), method: :DELETE, class: 'btn btn-success' %>
+              <% end %>
 
           </div>
         </div>
