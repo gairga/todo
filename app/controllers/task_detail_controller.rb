@@ -1,0 +1,4 @@
+class TaskDetailController < ApplicationController
+
+
+end

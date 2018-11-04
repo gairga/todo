@@ -9,6 +9,7 @@ class TaskDetailsController < ApplicationController
       @task_details = TaskDetail.new(user: current_user, task: @task, completed: true, status:true)
       @task_details.save
       flash[:success] = "Tarea Completada!!!"
+      redirect_to tasks_path
     end
   end
 
@@ -16,16 +17,12 @@ class TaskDetailsController < ApplicationController
     @task = Task.find(params[:task_id])
     @task_detail = current_user.tasks.find(params[:task_id])
     @task_detail.task_details[0].destroy
-    redirect_to root_path, notice: 'La tarea fue eliminada de la lista'
+    flash[:success] = "Tarea Eliminada!!!"
+    redirect_to tasks_path
   end
 
-  def show
-      @task_detail = Task.find(params[:task_id])
-      @task_detail.task_detail[0]
-      @completed_tasks = @completed_task.users
-      @completed_tasks_ranked = Task.find(params[:task_id])
-      @completed_tasks_ranked = @completed_tasks_ranked.completed_tasks.order(:created_at).limit(5)
-      @completed_tasks_ranked
+  def topfive
+    @task_detail = TaskDetail.limit(5)
   end
 
 

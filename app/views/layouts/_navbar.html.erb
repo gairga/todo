@@ -10,18 +10,24 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+        <%= link_to 'ToDo', tasks_path, class:'nav-link'  %>
+
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+            <%= link_to 'Top Five(5)', task_details_topfive_path, class:'nav-link'  %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
+        <a class="nav-link" href="#">Lista de Tareas</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <li class="form-inline my-2 my-lg-0">
+      <% if user_signed_in? %>
+
+          <%= current_user.email %></p>
+            <%= link_to 'Salir', destroy_user_session_path, method:'DELETE', class:'nav-link'  %>
+          <% else %>
+            <%= link_to 'Entrar', new_user_session_path, class:'nav-link'  %>
+          <% end %>
+    </li>
   </div>
 </nav>
